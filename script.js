@@ -11,28 +11,32 @@ const foods = [
 ];
 
 function render() {
-    const foodGrid = document.getElementById('foodGrid');
+    const foodGrid = document.getElementById("foodGrid");
 
-    if (!foodGrid) return;
+    if (!foodGrid) {
+        console.log("foodGrid not found");
+        return;
+    }
 
-    foodGrid.innerHTML = '';
+    let html = "";
 
     foods.forEach((food, index) => {
-        foodGrid.innerHTML += `
-            <div class="card ${food.stat}">
-                <div class="food-name">${food.name}</div>
-                <div class="food-buff">${food.buff}</div>
-                <div class="food-price">${food.price.toLocaleString()} Zeny</div>
+        html += `
+        <div class="card ${food.stat}">
+            <h3>${food.name}</h3>
+            <p>${food.buff}</p>
+            <p>${food.price.toLocaleString()} Zeny</p>
 
-                <div class="qty">
-                    <button onclick="changeQty(${index}, -1)">−</button>
-                    <span class="qty-value">${food.qty}</span>
-                    <button onclick="changeQty(${index}, 1)">+</button>
-                </div>
+            <div class="qty">
+                <button onclick="changeQty(${index}, -1)">-</button>
+                <span>${food.qty}</span>
+                <button onclick="changeQty(${index}, 1)">+</button>
             </div>
+        </div>
         `;
     });
 
+    foodGrid.innerHTML = html;
     updateSummary();
 }
 
