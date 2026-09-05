@@ -1,72 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Clown Fiesta Ragnarok food cost calculator" />
-  <title>Clown Fiesta • Food Cost Calculator</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clown Fiesta Food Calculator</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="page-glow glow-one"></div>
-  <div class="page-glow glow-two"></div>
+<div class="container">
+<h1 class="rainbow-title">🎪 CLOWN FIESTA</h1>
+<p class="subtitle">Food Cost Calculator</p>
 
-  <main class="container">
-    <header class="hero">
-      <img class="hero-banner" src="clown-fiesta-banner.png" alt="Clown Fiesta" />
-      <div class="hero-content">
-        <div class="rainbow-title" aria-label="Clown Fiesta">CLOWN FIESTA</div>
-        <h1>Food Cost Calculator</h1>
-        <p>Choose your food quantities and instantly see how much Zeny to prepare.</p>
-      </div>
-    </header>
+<div class="player-section">
+<label>Player Name</label>
+<input type="text" id="playerName" placeholder="Enter character name">
+</div>
 
-    <section class="player-card card">
-      <label for="playerName">Player Name</label>
-      <input id="playerName" type="text" maxlength="40" placeholder="Enter character name" autocomplete="off" />
-    </section>
+<div id="foods"></div>
 
-    <div class="layout">
-      <section class="food-panel card">
-        <div class="section-heading">
-          <div>
-            <span class="eyebrow">FOOD LIST</span>
-            <h2>Select your quantities</h2>
-          </div>
-          <div class="quick-actions">
-            <button type="button" class="ghost-btn" id="setOneBtn">Set All to 1</button>
-            <button type="button" class="ghost-btn" id="resetBtn">Reset All</button>
-          </div>
-        </div>
-        <div id="foodGroups"></div>
-      </section>
-
-      <aside class="order-panel">
-        <section class="summary-card card">
-          <img class="mascot" src="clown-mascot.png" alt="Clown Fiesta mascot" />
-          <div class="summary-heading">
-            <span class="eyebrow">ORDER SUMMARY</span>
-            <h2 id="summaryTitle">Your order</h2>
-          </div>
-          <div id="orderSummary" class="order-summary empty">No items selected yet.</div>
-          <div class="summary-total">
-            <span>Total Cost</span>
-            <strong id="grandTotal">0 Zeny</strong>
-          </div>
-          <button type="button" class="copy-btn" id="copyBtn">📋 Copy Order for Discord</button>
-          <p id="copyMessage" class="copy-message" aria-live="polite"></p>
-        </section>
-
-        <section class="party-card card">
-          <img src="clown-party.png" alt="Clown Fiesta party" />
-          <p>Good party. Good food. Great memories. ❤️</p>
-        </section>
-      </aside>
-    </div>
-
-    <footer>Prices are maintained by Clown Fiesta. Edit prices in <code>script.js</code>.</footer>
-  </main>
-
-  <script src="script.js"></script>
+<div class="summary-card">
+<h2>Order Summary</h2>
+<div id="orderSummary">No items selected yet</div>
+<h3>Total: <span id="grandTotal">0</span> Zeny</h3>
+<button onclick="copyOrder()">Copy Order For Discord</button>
+<button onclick="resetAll()">Reset</button>
+</div>
+</div>
+<script src="script.js"></script>
 </body>
 </html>
