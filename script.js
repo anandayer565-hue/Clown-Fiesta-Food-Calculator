@@ -12,60 +12,34 @@ const foods=[
 ];
 
 function render(){
-const div=document.getElementById("foods");
-div.innerHTML="";
+const g=document.getElementById('foodGrid');
+g.innerHTML='';
 foods.forEach((f,i)=>{
-div.innerHTML+=`
-<div class="food-card ${f.stat}">
-<div class="row">
-<div><b>${f.name}</b><br>${f.buff} - ${f.price.toLocaleString()}</div>
+g.innerHTML+=`<div class="card ${f.stat}">
+<b>${f.name}</b><br>${f.buff}<br>${f.price.toLocaleString()} Zeny
 <div class="qty">
-<button onclick="changeQty(${i},-1)">-</button>
-<span>${f.qty}</span>
-<button onclick="changeQty(${i},1)">+</button>
-</div>
-</div>
-</div>`;
+<button onclick="chg(${i},-1)">-</button>
+<b>${f.qty}</b>
+<button onclick="chg(${i},1)">+</button>
+</div></div>`;
 });
-updateSummary();
+update();
 }
-
-function changeQty(i,v){
-foods[i].qty=Math.max(0,foods[i].qty+v);
-render();
+function chg(i,v){foods[i].qty=Math.max(0,foods[i].qty+v);render();}
+function update(){
+let t=0,s='';
+foods.forEach(f=>{if(f.qty){s+=`${f.name} x ${f.qty}<br>`;t+=f.qty*f.price;}});
+document.getElementById('orderSummary').innerHTML=s||'No items selected';
+document.getElementById('grandTotal').innerText=t.toLocaleString();
 }
-
-function updateSummary(){
-let total=0;
-let txt="";
-foods.forEach(f=>{
-if(f.qty>0){
-txt+=`${f.name} x ${f.qty}<br>`;
-total+=f.qty*f.price;
-}
-});
-document.getElementById("orderSummary").innerHTML=txt||"No items selected yet";
-document.getElementById("grandTotal").innerText=total.toLocaleString();
-}
-
 function copyOrder(){
-let player=document.getElementById("playerName").value||"Unknown";
-let total=0;
-let text=`🎪 Clown Fiesta Food Order\n\nPlayer: ${player}\n\n`;
-foods.forEach(f=>{
-if(f.qty>0){
-text+=`${f.name} x ${f.qty}\n`;
-total+=f.qty*f.price;
+let p=document.getElementById('playerName').value||'Unknown';
+let t=0;
+let txt=`🎪 Clown Fiesta Food Order\n\nPlayer: ${p}\n\n`;
+foods.forEach(f=>{if(f.qty){txt+=`${f.name} x ${f.qty}\n`;t+=f.qty*f.price;}});
+txt+=`\n💰 Total: ${t.toLocaleString()} Zeny`;
+navigator.clipboard.writeText(txt);
+alert('Copied!');
 }
-});
-text+=`\n💰 Total: ${total.toLocaleString()} Zeny`;
-navigator.clipboard.writeText(text);
-alert("Order copied!");
-}
-
-function resetAll(){
-foods.forEach(f=>f.qty=0);
-render();
-}
-
+function resetAll(){foods.forEach(f=>f.qty=0);render();}
 render();

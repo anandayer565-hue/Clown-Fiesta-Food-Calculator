@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,22 +8,22 @@
 </head>
 <body>
 <div class="container">
-<h1 class="rainbow-title">🎪 CLOWN FIESTA</h1>
-<p class="subtitle">Food Cost Calculator</p>
+<header class="hero">
+<h1 class="rainbow">🎪 CLOWN FIESTA</h1>
+<p class="subtitle">Ragnarok Food Cost Calculator</p>
+<input id="playerName" placeholder="Character Name">
+</header>
 
-<div class="player-section">
-<label>Player Name</label>
-<input type="text" id="playerName" placeholder="Enter character name">
-</div>
+<div class="layout">
+<div id="foodGrid" class="food-grid"></div>
 
-<div id="foods"></div>
-
-<div class="summary-card">
+<div class="summary">
 <h2>Order Summary</h2>
-<div id="orderSummary">No items selected yet</div>
+<div id="orderSummary">No items selected</div>
 <h3>Total: <span id="grandTotal">0</span> Zeny</h3>
-<button onclick="copyOrder()">Copy Order For Discord</button>
+<button onclick="copyOrder()">Copy Order</button>
 <button onclick="resetAll()">Reset</button>
+</div>
 </div>
 </div>
 <script src="script.js"></script>
