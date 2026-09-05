@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clown Fiesta Food Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <header class="hero">
+            <div class="badge">CLOWN FIESTA</div>
+            <h1>Food Cost Calculator</h1>
+            <p>Enter the quantity you need and calculate the total Zeny instantly.</p>
+        </header>
+
+        <section class="card">
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Food</th>
+                            <th>Buff</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody id="foodTable"></tbody>
+                </table>
+            </div>
+
+            <div class="summary">
+                <div>
+                    <span class="summary-label">Grand Total</span>
+                    <strong id="grandTotal">0 Zeny</strong>
+                </div>
+                <div class="actions">
+                    <button id="copyBtn" class="primary">Copy Order</button>
+                    <button id="resetBtn" class="secondary">Reset</button>
+                </div>
+            </div>
+
+            <p id="copyMessage" class="copy-message" aria-live="polite"></p>
+        </section>
+
+        <footer>
+            Prices are maintained by Clown Fiesta. Last update: current price list.
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
